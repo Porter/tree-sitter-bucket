@@ -1,0 +1,245 @@
+{
+  "name": "bucket",
+  "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "bucket"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "STRING",
+              "value": "\n"
+            }
+          }
+        ]
+      }
+    },
+    "bucket": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "bucket_category"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bucket_start_date"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bucket_end_date"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bucket_weekly_amount"
+        }
+      ]
+    },
+    "bucket_category": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "category_string"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "STRING",
+            "value": " "
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bucket_category_value"
+        }
+      ]
+    },
+    "category_string": {
+      "type": "STRING",
+      "value": "Category:"
+    },
+    "bucket_category_value": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "(\\S+ ?)+"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ">"
+              },
+              {
+                "type": "PATTERN",
+                "value": "(\\S+ ?)+"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "start_string": {
+      "type": "STRING",
+      "value": "Start:"
+    },
+    "end_string": {
+      "type": "STRING",
+      "value": "End:"
+    },
+    "bucket_start_date": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "start_string"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "STRING",
+            "value": " "
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "date"
+        }
+      ]
+    },
+    "bucket_end_date": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "end_string"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "STRING",
+            "value": " "
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "date"
+        }
+      ]
+    },
+    "date": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "yyyymmdd"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mmddyyyy"
+        }
+      ]
+    },
+    "yyyymmdd": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\d\\d\\d\\d"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[01]?\\d"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0123]?\\d"
+        }
+      ]
+    },
+    "mmddyyyy": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[01]?\\d"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0123]?\\d"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\d\\d\\d\\d"
+        }
+      ]
+    },
+    "bucket_weekly_amount": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "weekly_amount_string"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "STRING",
+            "value": " "
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "amount"
+        }
+      ]
+    },
+    "weekly_amount_string": {
+      "type": "STRING",
+      "value": "Weekly Amount:"
+    },
+    "amount": {
+      "type": "PATTERN",
+      "value": "\\$?\\d+\\.?\\d?\\d?"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+

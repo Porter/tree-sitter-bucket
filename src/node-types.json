@@ -1,0 +1,190 @@
+[
+  {
+    "type": "bucket",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bucket_category",
+          "named": true
+        },
+        {
+          "type": "bucket_end_date",
+          "named": true
+        },
+        {
+          "type": "bucket_start_date",
+          "named": true
+        },
+        {
+          "type": "bucket_weekly_amount",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bucket_category",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bucket_category_value",
+          "named": true
+        },
+        {
+          "type": "category_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bucket_category_value",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "bucket_end_date",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "date",
+          "named": true
+        },
+        {
+          "type": "end_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bucket_start_date",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "date",
+          "named": true
+        },
+        {
+          "type": "start_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bucket_weekly_amount",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "amount",
+          "named": true
+        },
+        {
+          "type": "weekly_amount_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "date",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "mmddyyyy",
+          "named": true
+        },
+        {
+          "type": "yyyymmdd",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mmddyyyy",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bucket",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "yyyymmdd",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": " ",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": "amount",
+    "named": true
+  },
+  {
+    "type": "category_string",
+    "named": true
+  },
+  {
+    "type": "end_string",
+    "named": true
+  },
+  {
+    "type": "start_string",
+    "named": true
+  },
+  {
+    "type": "weekly_amount_string",
+    "named": true
+  }
+]
