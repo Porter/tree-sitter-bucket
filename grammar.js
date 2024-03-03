@@ -29,8 +29,10 @@ module.exports = grammar({
 
     start_string: $ => "Start:",
     end_string: $ => "End:",
-    bucket_start_date: $ => seq($.start_string, repeat(" "), $.date),
-    bucket_end_date: $ => seq($.end_string, repeat(" "), $.date),
+    bucket_start_date: $ => seq($.start_string, repeat(" "), $.start_date),
+    bucket_end_date: $ => seq($.end_string, repeat(" "), $.end_date),
+    start_date: $ => $.date,
+    end_date: $ => $.date,
     date: $ => choice(
       $.yyyymmdd,
       $.mmddyyyy,

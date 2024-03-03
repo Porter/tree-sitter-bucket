@@ -59,7 +59,7 @@
       "required": true,
       "types": [
         {
-          "type": "date",
+          "type": "end_date",
           "named": true
         },
         {
@@ -78,7 +78,7 @@
       "required": true,
       "types": [
         {
-          "type": "date",
+          "type": "start_date",
           "named": true
         },
         {
@@ -127,6 +127,21 @@
     }
   },
   {
+    "type": "end_date",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "date",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "mmddyyyy",
     "named": true,
     "fields": {},
@@ -159,6 +174,21 @@
       "types": [
         {
           "type": "bucket",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "start_date",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "date",
           "named": true
         }
       ]

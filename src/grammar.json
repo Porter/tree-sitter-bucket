@@ -114,7 +114,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "date"
+          "name": "start_date"
         }
       ]
     },
@@ -134,9 +134,17 @@
         },
         {
           "type": "SYMBOL",
-          "name": "date"
+          "name": "end_date"
         }
       ]
+    },
+    "start_date": {
+      "type": "SYMBOL",
+      "name": "date"
+    },
+    "end_date": {
+      "type": "SYMBOL",
+      "name": "date"
     },
     "date": {
       "type": "CHOICE",
