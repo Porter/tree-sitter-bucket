@@ -24,10 +24,10 @@ enum {
   anon_sym_GT = 5,
   sym_start_string = 6,
   sym_end_string = 7,
-  aux_sym_yyyymmdd_token1 = 8,
-  anon_sym_SLASH = 9,
-  aux_sym_yyyymmdd_token2 = 10,
-  aux_sym_yyyymmdd_token3 = 11,
+  anon_sym_SLASH = 8,
+  sym_mm = 9,
+  sym_dd = 10,
+  sym_yyyy = 11,
   sym_weekly_amount_string = 12,
   sym_amount = 13,
   sym_source_file = 14,
@@ -55,10 +55,10 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_GT] = ">",
   [sym_start_string] = "start_string",
   [sym_end_string] = "end_string",
-  [aux_sym_yyyymmdd_token1] = "yyyymmdd_token1",
   [anon_sym_SLASH] = "/",
-  [aux_sym_yyyymmdd_token2] = "yyyymmdd_token2",
-  [aux_sym_yyyymmdd_token3] = "yyyymmdd_token3",
+  [sym_mm] = "mm",
+  [sym_dd] = "dd",
+  [sym_yyyy] = "yyyy",
   [sym_weekly_amount_string] = "weekly_amount_string",
   [sym_amount] = "amount",
   [sym_source_file] = "source_file",
@@ -86,10 +86,10 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_GT] = anon_sym_GT,
   [sym_start_string] = sym_start_string,
   [sym_end_string] = sym_end_string,
-  [aux_sym_yyyymmdd_token1] = aux_sym_yyyymmdd_token1,
   [anon_sym_SLASH] = anon_sym_SLASH,
-  [aux_sym_yyyymmdd_token2] = aux_sym_yyyymmdd_token2,
-  [aux_sym_yyyymmdd_token3] = aux_sym_yyyymmdd_token3,
+  [sym_mm] = sym_mm,
+  [sym_dd] = sym_dd,
+  [sym_yyyy] = sym_yyyy,
   [sym_weekly_amount_string] = sym_weekly_amount_string,
   [sym_amount] = sym_amount,
   [sym_source_file] = sym_source_file,
@@ -141,21 +141,21 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [aux_sym_yyyymmdd_token1] = {
-    .visible = false,
-    .named = false,
-  },
   [anon_sym_SLASH] = {
     .visible = true,
     .named = false,
   },
-  [aux_sym_yyyymmdd_token2] = {
-    .visible = false,
-    .named = false,
+  [sym_mm] = {
+    .visible = true,
+    .named = true,
   },
-  [aux_sym_yyyymmdd_token3] = {
-    .visible = false,
-    .named = false,
+  [sym_dd] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_yyyy] = {
+    .visible = true,
+    .named = true,
   },
   [sym_weekly_amount_string] = {
     .visible = true,
@@ -288,21 +288,21 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 0:
       if (eof) ADVANCE(40);
       if (lookahead == '$') ADVANCE(36);
-      if (lookahead == '/') ADVANCE(51);
+      if (lookahead == '/') ADVANCE(49);
       if (lookahead == '>') ADVANCE(46);
       if (lookahead == 'C') ADVANCE(11);
       if (lookahead == 'E') ADVANCE(20);
       if (lookahead == 'S') ADVANCE(26);
       if (lookahead == 'W') ADVANCE(15);
       if (lookahead == '0' ||
-          lookahead == '1') ADVANCE(54);
+          lookahead == '1') ADVANCE(52);
       if (lookahead == '2' ||
-          lookahead == '3') ADVANCE(52);
+          lookahead == '3') ADVANCE(50);
       if (lookahead == '\t' ||
           lookahead == '\n' ||
           lookahead == '\r' ||
           lookahead == ' ') SKIP(0)
-      if (('4' <= lookahead && lookahead <= '9')) ADVANCE(55);
+      if (('4' <= lookahead && lookahead <= '9')) ADVANCE(53);
       END_STATE();
     case 1:
       if (lookahead == ' ') ADVANCE(9);
@@ -318,11 +318,11 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 3:
       if (lookahead == ' ') ADVANCE(42);
       if (lookahead == '0' ||
-          lookahead == '1') ADVANCE(58);
+          lookahead == '1') ADVANCE(56);
       if (lookahead == '\t' ||
           lookahead == '\n' ||
           lookahead == '\r') SKIP(3)
-      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(56);
+      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(54);
       END_STATE();
     case 4:
       if (lookahead == ' ') ADVANCE(42);
@@ -417,12 +417,12 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 33:
       if (lookahead == '0' ||
-          lookahead == '1') ADVANCE(58);
+          lookahead == '1') ADVANCE(56);
       if (lookahead == '\t' ||
           lookahead == '\n' ||
           lookahead == '\r' ||
           lookahead == ' ') SKIP(33)
-      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(56);
+      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(54);
       END_STATE();
     case 34:
       if (lookahead == '\t' ||
@@ -436,14 +436,14 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == '\n' ||
           lookahead == '\r' ||
           lookahead == ' ') SKIP(35)
-      if (('0' <= lookahead && lookahead <= '3')) ADVANCE(61);
-      if (('4' <= lookahead && lookahead <= '9')) ADVANCE(59);
+      if (('0' <= lookahead && lookahead <= '3')) ADVANCE(59);
+      if (('4' <= lookahead && lookahead <= '9')) ADVANCE(57);
       END_STATE();
     case 36:
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(64);
       END_STATE();
     case 37:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(49);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(60);
       END_STATE();
     case 38:
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(37);
@@ -496,59 +496,59 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(sym_end_string);
       END_STATE();
     case 49:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token1);
-      END_STATE();
-    case 50:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token1);
-      if (lookahead == '.') ADVANCE(68);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(64);
-      END_STATE();
-    case 51:
       ACCEPT_TOKEN(anon_sym_SLASH);
       END_STATE();
-    case 52:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token2);
+    case 50:
+      ACCEPT_TOKEN(sym_mm);
       if (lookahead == '.') ADVANCE(68);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(60);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(58);
       END_STATE();
-    case 53:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token2);
+    case 51:
+      ACCEPT_TOKEN(sym_mm);
       if (lookahead == '.') ADVANCE(68);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(65);
       END_STATE();
-    case 54:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token2);
+    case 52:
+      ACCEPT_TOKEN(sym_mm);
       if (lookahead == '.') ADVANCE(68);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(53);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(51);
       END_STATE();
-    case 55:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token2);
+    case 53:
+      ACCEPT_TOKEN(sym_mm);
       if (lookahead == '.') ADVANCE(68);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(66);
       END_STATE();
-    case 56:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token2);
+    case 54:
+      ACCEPT_TOKEN(sym_mm);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(38);
       END_STATE();
-    case 57:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token2);
+    case 55:
+      ACCEPT_TOKEN(sym_mm);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(37);
       END_STATE();
+    case 56:
+      ACCEPT_TOKEN(sym_mm);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(55);
+      END_STATE();
+    case 57:
+      ACCEPT_TOKEN(sym_dd);
+      END_STATE();
     case 58:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token2);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(57);
-      END_STATE();
-    case 59:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token3);
-      END_STATE();
-    case 60:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token3);
+      ACCEPT_TOKEN(sym_dd);
       if (lookahead == '.') ADVANCE(68);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(65);
       END_STATE();
+    case 59:
+      ACCEPT_TOKEN(sym_dd);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(57);
+      END_STATE();
+    case 60:
+      ACCEPT_TOKEN(sym_yyyy);
+      END_STATE();
     case 61:
-      ACCEPT_TOKEN(aux_sym_yyyymmdd_token3);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(59);
+      ACCEPT_TOKEN(sym_yyyy);
+      if (lookahead == '.') ADVANCE(68);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(64);
       END_STATE();
     case 62:
       ACCEPT_TOKEN(sym_weekly_amount_string);
@@ -564,7 +564,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 65:
       ACCEPT_TOKEN(sym_amount);
       if (lookahead == '.') ADVANCE(68);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(50);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(61);
       END_STATE();
     case 66:
       ACCEPT_TOKEN(sym_amount);
@@ -625,12 +625,12 @@ static const TSLexMode ts_lex_modes[STATE_COUNT] = {
   [37] = {.lex_state = 0},
   [38] = {.lex_state = 0},
   [39] = {.lex_state = 0},
-  [40] = {.lex_state = 35},
-  [41] = {.lex_state = 33},
+  [40] = {.lex_state = 33},
+  [41] = {.lex_state = 35},
   [42] = {.lex_state = 0},
-  [43] = {.lex_state = 33},
+  [43] = {.lex_state = 35},
   [44] = {.lex_state = 0},
-  [45] = {.lex_state = 35},
+  [45] = {.lex_state = 33},
   [46] = {.lex_state = 0},
 };
 
@@ -641,10 +641,10 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_GT] = ACTIONS(1),
     [sym_start_string] = ACTIONS(1),
     [sym_end_string] = ACTIONS(1),
-    [aux_sym_yyyymmdd_token1] = ACTIONS(1),
     [anon_sym_SLASH] = ACTIONS(1),
-    [aux_sym_yyyymmdd_token2] = ACTIONS(1),
-    [aux_sym_yyyymmdd_token3] = ACTIONS(1),
+    [sym_mm] = ACTIONS(1),
+    [sym_dd] = ACTIONS(1),
+    [sym_yyyy] = ACTIONS(1),
     [sym_weekly_amount_string] = ACTIONS(1),
     [sym_amount] = ACTIONS(1),
   },
@@ -663,9 +663,9 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(7), 1,
       anon_sym_,
     ACTIONS(9), 1,
-      aux_sym_yyyymmdd_token1,
+      sym_mm,
     ACTIONS(11), 1,
-      aux_sym_yyyymmdd_token2,
+      sym_yyyy,
     STATE(10), 1,
       aux_sym_bucket_category_repeat1,
     STATE(37), 1,
@@ -675,9 +675,9 @@ static const uint16_t ts_small_parse_table[] = {
       sym_mmddyyyy,
   [20] = 6,
     ACTIONS(9), 1,
-      aux_sym_yyyymmdd_token1,
+      sym_mm,
     ACTIONS(11), 1,
-      aux_sym_yyyymmdd_token2,
+      sym_yyyy,
     ACTIONS(13), 1,
       anon_sym_,
     STATE(2), 1,
@@ -689,9 +689,9 @@ static const uint16_t ts_small_parse_table[] = {
       sym_mmddyyyy,
   [40] = 6,
     ACTIONS(9), 1,
-      aux_sym_yyyymmdd_token1,
+      sym_mm,
     ACTIONS(11), 1,
-      aux_sym_yyyymmdd_token2,
+      sym_yyyy,
     ACTIONS(15), 1,
       anon_sym_,
     STATE(5), 1,
@@ -705,9 +705,9 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(7), 1,
       anon_sym_,
     ACTIONS(9), 1,
-      aux_sym_yyyymmdd_token1,
+      sym_mm,
     ACTIONS(11), 1,
-      aux_sym_yyyymmdd_token2,
+      sym_yyyy,
     STATE(10), 1,
       aux_sym_bucket_category_repeat1,
     STATE(44), 1,
@@ -761,8 +761,8 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(10), 1,
       aux_sym_bucket_category_repeat1,
     ACTIONS(38), 2,
-      aux_sym_yyyymmdd_token1,
-      aux_sym_yyyymmdd_token2,
+      sym_mm,
+      sym_yyyy,
   [149] = 4,
     ACTIONS(40), 1,
       ts_builtin_sym_end,
@@ -917,22 +917,22 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_SLASH,
   [359] = 1,
     ACTIONS(119), 1,
-      aux_sym_yyyymmdd_token3,
+      sym_yyyy,
   [363] = 1,
     ACTIONS(121), 1,
-      aux_sym_yyyymmdd_token1,
+      sym_dd,
   [367] = 1,
     ACTIONS(123), 1,
       anon_sym_SLASH,
   [371] = 1,
     ACTIONS(125), 1,
-      aux_sym_yyyymmdd_token2,
+      sym_dd,
   [375] = 1,
     ACTIONS(127), 1,
       sym_end_string,
   [379] = 1,
     ACTIONS(129), 1,
-      aux_sym_yyyymmdd_token3,
+      sym_mm,
   [383] = 1,
     ACTIONS(131), 1,
       sym_start_string,
@@ -1033,8 +1033,8 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [91] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
   [93] = {.entry = {.count = 1, .reusable = true}}, SHIFT(14),
   [95] = {.entry = {.count = 1, .reusable = true}}, SHIFT(4),
-  [97] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_mmddyyyy, 5),
-  [99] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_yyyymmdd, 5),
+  [97] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_yyyymmdd, 5),
+  [99] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_mmddyyyy, 5),
   [101] = {.entry = {.count = 1, .reusable = true}}, SHIFT(40),
   [103] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bucket_end_date, 2),
   [105] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bucket_category, 2),

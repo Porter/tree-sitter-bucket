@@ -155,24 +155,24 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "\\d\\d\\d\\d"
+          "type": "SYMBOL",
+          "name": "yyyy"
         },
         {
           "type": "STRING",
           "value": "/"
         },
         {
-          "type": "PATTERN",
-          "value": "[01]?\\d"
+          "type": "SYMBOL",
+          "name": "mm"
         },
         {
           "type": "STRING",
           "value": "/"
         },
         {
-          "type": "PATTERN",
-          "value": "[0123]?\\d"
+          "type": "SYMBOL",
+          "name": "dd"
         }
       ]
     },
@@ -180,26 +180,38 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[01]?\\d"
+          "type": "SYMBOL",
+          "name": "mm"
         },
         {
           "type": "STRING",
           "value": "/"
         },
         {
-          "type": "PATTERN",
-          "value": "[0123]?\\d"
+          "type": "SYMBOL",
+          "name": "dd"
         },
         {
           "type": "STRING",
           "value": "/"
         },
         {
-          "type": "PATTERN",
-          "value": "\\d\\d\\d\\d"
+          "type": "SYMBOL",
+          "name": "yyyy"
         }
       ]
+    },
+    "mm": {
+      "type": "PATTERN",
+      "value": "[01]?\\d"
+    },
+    "dd": {
+      "type": "PATTERN",
+      "value": "[0123]?\\d"
+    },
+    "yyyy": {
+      "type": "PATTERN",
+      "value": "\\d\\d\\d\\d"
     },
     "bucket_weekly_amount": {
       "type": "SEQ",

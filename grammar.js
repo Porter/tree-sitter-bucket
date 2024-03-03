@@ -35,8 +35,11 @@ module.exports = grammar({
       $.yyyymmdd,
       $.mmddyyyy,
     ),
-    yyyymmdd: $ => seq(/\d\d\d\d/, "/", /[01]?\d/, "/", /[0123]?\d/),
-    mmddyyyy: $ => seq(/[01]?\d/,"/", /[0123]?\d/, "/", /\d\d\d\d/),
+    yyyymmdd: $ => seq($.yyyy, "/", $.mm, "/", $.dd),
+    mmddyyyy: $ => seq($.mm ,"/", $.dd, "/", $.yyyy),
+    mm: $ => /[01]?\d/,
+    dd: $ => /[0123]?\d/,
+    yyyy: $ => /\d\d\d\d/,
 
     bucket_weekly_amount: $ => seq($.weekly_amount_string, repeat(" "), $.amount),
     weekly_amount_string: $ => "Weekly Amount:",
