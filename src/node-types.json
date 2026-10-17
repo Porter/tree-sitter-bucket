@@ -1,5 +1,10 @@
 [
   {
+    "type": "amount",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "bucket",
     "named": true,
     "fields": {},
@@ -167,6 +172,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -232,10 +238,6 @@
   {
     "type": ">",
     "named": false
-  },
-  {
-    "type": "amount",
-    "named": true
   },
   {
     "type": "category_string",

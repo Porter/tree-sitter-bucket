@@ -45,6 +45,12 @@ module.exports = grammar({
 
     bucket_weekly_amount: $ => seq($.weekly_amount_string, repeat(" "), $.amount),
     weekly_amount_string: $ => "Weekly Amount:",
-    amount: $ => /\$?\d+\.?\d?\d?/,
+    // A leading "+" marks expected income instead of a spending allowance.
+    // A ticker after a single space makes it a quantity of that commodity,
+    // e.g. "+1.2 GOOG"; otherwise it's USD.
+    amount: $ => choice(
+      /\+?\$?\d+\.?\d*/,
+      /\+?\d+\.?\d* [A-Z][A-Z0-9]*(\.[A-Z0-9]+)?/,
+    ),
   }
 });

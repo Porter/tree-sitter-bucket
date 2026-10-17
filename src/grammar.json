@@ -246,8 +246,17 @@
       "value": "Weekly Amount:"
     },
     "amount": {
-      "type": "PATTERN",
-      "value": "\\$?\\d+\\.?\\d?\\d?"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\+?\\$?\\d+\\.?\\d*"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\+?\\d+\\.?\\d* [A-Z][A-Z0-9]*(\\.[A-Z0-9]+)?"
+        }
+      ]
     }
   },
   "extras": [
@@ -262,4 +271,3 @@
   "inline": [],
   "supertypes": []
 }
-
